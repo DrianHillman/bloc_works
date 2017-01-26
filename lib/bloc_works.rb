@@ -1,4 +1,5 @@
 require "bloc_works/version"
+require "bloc_works/controller"
 
 module BlocWorks
   class Application

@@ -4,7 +4,12 @@ require "bloc_works/controller"
 module BlocWorks
   class Application
     def call(env)
-      [200, {'Content-Type' => 'text/html'}, ["Hello Blocheads!"]]
+      if env['PATH_INFO'] == '/favicon.ico'
+        return [404, {'Content-Type' => 'text/html'}, []]
+      end
+      
+      rack_app = get_rack_app(env)
+      rack_app.call(env)
     end
   end
 end
